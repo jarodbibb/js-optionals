@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title> Would you like to play a game?</title>
+        <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type="text/javascript">
+         $(document).ready( function (){
+             var score = 0;
+             var next = 0;
+             $.get("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=boolean", function(data){
+                 console.log(data)
+                 
+                 $('h1').html(data.results[next].question)
+
+
+                //  $('button').click(function(){
+                //      next++;
+                //      if(next < data.results.length){
+                //          $('h1').html(data.results[next].question)
+                //      }
+
+                //  })
+                 $('form').submit(function(){
+                    var ans =  $('input[name=ans]:checked').val()
+                    console.log(data.results[next].correct_answer)
+                    if(ans === data.results[next].correct_answer){
+                        score++
+                        $('h2').html("Correct! Your score is: " + score)
+                    } else {
+                        $('h2').html(" sorry charlie. YOur score is still: " + score)
+                       next++
+                        
+
+                    }
+                    next++
+                    $('h1').html(data.results[next].question)
+                     return false
+                 })
+
+                 
+             })
+         })
+        </script>
+   
+    </head>
+    <body>
+        <h1></h1>
+        <h2></h2>
+        <p></p>
+        <form>
+            <input type="radio" name="ans" id="true" value="True">
+            <label for="True">true</label>
+            <input type='radio' name="ans" id="False" value="False">
+            <label for="False"> False</label>
+            <input type="submit">
+        </form>
+        <!-- <button>NEXT Question</button> -->
+    </body>
+</html>
