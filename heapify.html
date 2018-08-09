@@ -1,0 +1,29 @@
+<html>
+    <head><title>Heapify</title></head>
+    <body>
+        <script> 
+        function heapify(arr){
+            var temp = arr[0]
+            arr[0] = "undefined"
+            arr.push(temp)
+            larg_par=  Math.trunc(arr.length / 2)
+            for(let i = larg_par; i > 0; i--){
+                var child1 = i * 2
+                var child2 = i * 2 + 1
+                if( arr[i] > arr[child1] ){
+
+                    var temp = arr[i];
+                    arr[i] = arr[child1]
+                    arr[child1] = temp
+
+                }else if( arr[i] > arr[child2]){
+                    var temp = arr[i];
+                    arr[i]= arr[child];
+                    arr[child2] = temp;
+                } 
+            }
+            return arr;
+        }
+        </script>
+    </body>
+</html>

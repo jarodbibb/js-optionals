@@ -1,0 +1,23 @@
+<html>
+    <head><title>Heap Sort</title></head>
+    <body> 
+        <script> 
+        function heapSort(input){
+        var counter = 0;
+        while(counter< input.length){
+            runner = input.length -1;
+            for( let i= runner; i >= 0; i--){
+                if(input[i] < input[i-1]){
+                    var temp = input[i]
+                    input[i] = input[i-1]
+                    input[i-1] = temp;
+                }
+            }
+            counter += 1;
+
+        }
+        return input
+        }
+        </script>
+    </body>
+</html>

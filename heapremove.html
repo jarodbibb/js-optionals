@@ -1,0 +1,45 @@
+<html>
+    <head><title>Remove Smallest Value</title></head>
+    <body>
+        <script>
+            function removeFromMinHeap(heap){
+                var temp = heap[1]
+                heap[1]=  heap[heap.length -1]
+                heap[heap.length -1] = temp
+                var small = heap.pop();
+               
+                var par = heap[1]
+                var child1 = heap[2]
+                var child2 = heap[3]
+                var idx = 1
+                var idx1 = 2
+                var idx2 = 3
+                
+                while(par > child1 && idx || par > child2 && idx){
+                    console.log("in it ")
+                    if( child1 < child2){
+                        var temp = heap[idx]
+                       heap[idx] = child1;
+                       heap[idx1] = temp;
+                       idx = idx1
+
+                        
+                    } else {
+                        var temp = heap[idx];
+                        heap[idx] = child2;
+                        heap[idx2]= temp
+                        idx = idx2
+                    }
+                    idx1 = idx * 2;
+                    idx2 = idx *2 + 1;
+                    par = heap[idx]
+                    child1 = heap[idx1]
+                    child2 = heap[idx2]
+                }
+               console.log(heap)
+                return small
+            }
+            
+            </script>
+    </body>
+</html>

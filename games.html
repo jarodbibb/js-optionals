@@ -4,47 +4,71 @@
     </head>
     <body>
         <script> 
-        var tigger = { character: "Tigger" , greet: function(){console.log("i am the only one")}}; // start with just the character attribute
-var pooh = { character: "Winnie the Pooh", greet: function(){console.log('oooh')} };
-tigger.north = pooh; 
-pooh.south = tigger;
+        
+      function mission () { var num = Math.floor(Math.random() * Math.floor(6));
+        console.log(num)
+        var task
+        if( num === 0){
+            task = tigger;
+        } else if( num === 1) {
+            task =  pooh
+        } else { task =piglet}
+            return task
+        }
+         var madeIt = mission()
+         var player = {location: tigger,
+    honey: false}
 
-var piglet = { character: "Piglet"};        // create Piglet's home object with just the character attribute
-piglet.east = tigger.north;          // Piglet's east attribute is Tigger's north attribute, which is a memory address
-tigger.north.west = piglet;          // Follow Tigger's north attribute to a location in mem
-var owl = {character: "Owl"}
-owl.south= piglet;
-piglet.north = owl;
-var christopher = {character: "Christopher Robbins"}
-christopher.west = owl;
-owl.east = christopher;
-christopher.south = pooh;
-pooh.north = christopher
-var rabbit = { character: "Rabbit"}
-rabbit.west = christopher;
-christopher.east = rabbit;
+     
+         var tigger = { character: "Tigger" , greet: function(){console.log("i am the only one")}}; // start with just the character attribute
+         var pooh = { character: "Winnie the Pooh", greet: function(){console.log('oooh')} };
+         tigger.north = pooh; 
+         pooh.south = tigger;
+         
+         var piglet = { character: "Piglet", greet: function(){console.log('pigglet toes')}};        // create Piglet's home object with just the character attribute
+         piglet.east = tigger.north;          // Piglet's east attribute is Tigger's north attribute, which is a memory address
+         tigger.north.west = piglet;          // Follow Tigger's north attribute to a location in mem
+         var owl = {character: "Owl", greet: function(){console.log('pigglet toes')}}
+         owl.south= piglet;
+         piglet.north = owl;
+         var christopher = {character: "Christopher Robbins", greet: function(){console.log('pigglet toes')}}
+         christopher.west = owl;
+         owl.east = christopher;
+         christopher.south = pooh;
+         pooh.north = christopher
+         var rabbit = { character: "Rabbit", greet: function(){console.log('pigglet toes')}}
+         rabbit.west = christopher;
+         christopher.east = rabbit;
 var bees = {character: "Bees", greet: function(){console.log('dilly dally')}}
 bees.north = rabbit;
 rabbit.south = bees;
 bees.west = pooh;
 pooh.east = bees;
-var player = {location: tigger,
-honey: false}
-function move(direction, house){
-    var current = house.location
-    player.location  = current[direction]
-    player.location.greet();
-    
-}
+
+    function move(direction, house){
+        var current = house.location
+        player.location  = current[direction]
+        player.location.greet();
+       
+     if(madeIt.character === player.location.character && player.honey){
+         console.log("you have won!!!!!!!")
+     
+     }else {
+         console.log('your move rookie')
+     }
+        
+    }
     function pickup(player){
         if(player.location.character === bees.character ){
             player.honey = true;
             console.log("got the package")
-
+            
         } else {
             console.log("ain't no honey here for you sweetie")
         }
-    }
+}
+
+
     </script>
     </body>
 </html>

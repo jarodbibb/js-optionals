@@ -1,0 +1,32 @@
+<html>
+    <head>
+
+        <title>Learning about heaps</title>
+
+    </head>
+    <body>
+        <script>
+
+            function insertIntoHeap(heap, val){
+                // insertSpot = heap.length;
+                if(heap.length === 0 ){
+                    heap.push('undefined')
+                }
+                var child_index = heap.length
+                heap.push(val)
+                console.log("testing:", heap)
+                var parent_index = Math.trunc(child_index / 2)
+              
+
+                while(heap[child_index] < heap[parent_index]){
+                    var temp = heap[parent_index];
+                   heap[parent_index] = heap[child_index];
+                   heap[child_index]  = temp;
+                   child_index = parent_index;
+                   parent_index = Math.trunc(child_index/2)
+            }
+            return heap;
+        }
+            </script>
+    </body>
+</html>
