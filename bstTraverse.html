@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Traversing every which way</title>
+    </head>
+    <body>
+        <script>
+function Bst(){
+                this.root = null
+            }
+function Node(val){
+                this.value = val;
+                this.left = null;
+                this.right = null;
+            }
+Bst.prototype.insertNode = function(val){
+    var node = new Node(val);
+    if(!this.root){
+        this.root = node;
+        
+    } else { 
+    var currentNode = this.root;
+    while(currentNode){
+    if(currentNode.value> val){
+        if(!currentNode.left){
+           
+            currentNode.left = node;
+            return this;
+            
+        }else {
+            currentNode = currentNode.left;
+        }
+
+    } else {
+        if(!currentNode.right){
+            currentNode.right = node
+           return this;
+        } else{
+            currentNode = currentNode.right;
+        }
+    }
+}}
+}
+Bst.prototype.preOrderTraversal = function(root){
+    var counterl = 0
+    var counterr = 0
+    consol.log(root.value)
+    if (root.left){
+        console.log("left")
+        counterl += 1
+        this.preOrderTraversal(root.left)
+    }
+    if (root.right){ 
+        console.log('right', this)
+        counterr ++
+        
+        this.preOrderTraversal(root.right)
+    }
+};
+Bst.prototype.postOrderTraversal = function(root){
+    if (root.left){
+        console.log("left")
+       
+        this.postOrderTraversal(root.left)
+    }
+    if (root.right){ 
+        console.log('right', this)
+      
+        
+        this.postOrderTraversal(root.right)
+    }
+    console.log(root.value)
+
+}
+Bst.prototype.inOrderTraversal = function(root){
+       if(root.left){
+           this.inOrderTraversal(root.left);
+       }
+       console.log(root.value)
+       if(root.right){
+           this.inOrderTraversal(root.right)
+       }}
+
+            </script>
+    </body>
+</html>

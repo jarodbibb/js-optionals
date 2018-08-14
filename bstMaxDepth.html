@@ -1,0 +1,20 @@
+<html>
+    <head><title>Find the max depth</title></head>
+    <body>
+        <script>
+            function findMaxDepth(node){
+                if(!node){
+                    return 0
+                }
+                var left = findMaxDepth(node.left)
+                var right = findMaxDepth(node.right)
+                if( left > right){
+                    return left + 1
+                }else {
+                     return right +1
+                }
+            }
+        
+        </script>
+    </body>
+</html>
