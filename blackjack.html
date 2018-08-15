@@ -1,0 +1,203 @@
+<html>
+    <head> <title>Cards</title></head>
+    <body>
+        <script>
+            //  Need to come back and finish this when i have time.....! Think i should reorganize the classes 
+            class Game {
+                constructor(){
+               
+                this.player = [];
+                     for(let i = 0; i < arguments.length; i++){
+                    this.player.push(new Player(argurments[i]))
+                    
+                }
+
+                this.number = arguments.length
+                }
+                startGame(){
+
+                    var deck = new Deck();
+                    deck.shuffle();
+                    
+                    for( let i = 0; i < this.number; i++){
+                      deck.deal(this.player[i])
+                    }
+                    for( let i = 0; i < this.number; i++){
+                      deck.deal(this.player[i])
+                    }
+                var dealer = new Player(dealer)
+
+                    deck.deal(dealer)
+                    deck.deal(dealer)
+                    if(dealer.hand[0].value + dealer.hand[1].value === 21){console.log('you lose')}
+                    if(dealer.hand[0].value + dealer.hand[1].value < 21){console.log('hit?')}
+                    
+
+                    }
+                    
+                
+                }
+            
+              class Card  {
+                constructor(suit, letter, value){
+                    this.suit = suit;
+                    this.letter = letter;
+                    this.value = value;
+                    
+                }
+                show(){
+                    console.log(`${this.letter} of ${this.suit} with a value of ${this.value}`)
+                }
+            }
+            class Player {
+                constructor( name, hand){
+                    this.name = name;
+                    this.hand = [];
+                }
+                discard(deck){
+                   var temp =  this.hand.pop();
+                   deck.newCard.push(temp)
+                }
+            }
+              class Deck{
+                constructor(newCard){
+                    this.newCard = [];
+                }
+                shuffle(){
+                    var count = 0 ;
+                    while(count < 55){
+                        var rand1 = Math.floor(Math.random() * 52)
+                        var rand2 = Math.floor(Math.random() * 52)
+                        var temp = this.newCard[rand1];
+                        this.newCard[rand1] = this.newCard[rand2]
+                        this.newCard[rand2] = temp;
+                        count ++
+
+
+                    }
+                  
+                    
+                    }
+
+                deal(player){
+                    console.log("this hand", player.hand)
+                    var temp = this.newCard.pop();
+                    console.log("temp", temp)
+                    player.hand.push(temp)
+                        
+                    
+
+                }
+                create(){
+                  
+                    var counter = 0
+                 console.log('entered')
+                       
+                        if(counter === 0){
+                                console.log('if')
+                            for(let i = 1; i < 14; i++ ){
+                              
+                                var val = i;
+                                if( i === 1){
+                                    val = 'ace'
+                                }
+                                else if ( i === 11){
+                                    val = 'jack'
+                                }
+                                else if ( i === 12 ){
+                                    val = 'queen'
+                                }
+                                else if( i === 13){
+                                    val = 'king'
+                                }else{
+                                
+                                }
+
+                              
+                            
+                                this.newCard.push(new Card("spade", val, i ))
+                             
+                            }
+                               
+                                counter += 1;
+                         
+                                }
+                            if(counter === 1){
+
+                            for(let i = 1; i < 14; i++ ){
+                                
+                                var val = i;
+                                if( i === 1){
+                                    val = 'ace'
+                                }
+                                else if ( i === 11){
+                                    val = 'jack'
+                                }
+                                else if ( i === 12 ){
+                                    val = 'queen'
+                                }
+                                else if( i === 13){
+                                    val = 'king'
+                                }else {
+                                }
+                                this.newCard.push(new Card("clubs", val, i ))
+
+                                }
+                                
+                            }
+                                counter += 1;
+                            if(counter === 2){
+
+                            for(let i = 1; i < 14; i++ ){
+                                var val = i;
+                                if( i === 1){
+                                    val = 'ace'
+                                }
+                                else if ( i === 11){
+                                    val = 'jack'
+                                }
+                                else if ( i === 12 ){
+                                    val = 'queen'
+                                }
+                                else if( i === 13){
+                                    val = 'king'
+                                }else {
+                                    
+                                }
+                                this.newCard.push(new Card("diamonds", val, i ))
+
+                                }
+                            }
+                                counter += 1;
+                            if(counter === 3){
+
+                            for(let i = 1; i < 14; i++ ){
+                                var val = i;
+                                if( i === 1){
+                                    val = 'ace'
+                                }
+                                else if ( i === 11){
+                                    val = 'jack'
+                                }
+                                else if ( i === 12 ){
+                                    val = 'queen'
+                                }
+                                else if( i === 13){
+                                    val = 'king'
+                                } else {}
+                                this.newCard.push(new Card("hearts", val, i ))
+
+                                
+                            
+                                            }
+                                            }
+                                counter += 1;
+                                            
+                }
+            
+                                            }
+                    
+          
+        </script>
+    </body>
+</html>

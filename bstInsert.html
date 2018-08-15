@@ -12,12 +12,12 @@
             }
             this.insert = function(val){
 
-                console.log('tree.root: ', tree.root)
+            
                 var new_node = new Node(val)
-                if(tree.root === null){
-                   tree.root = new_node;
+                if(this.root === null){
+                   this.root = new_node;
                 } else {
-                    var current = tree.root;
+                    var current = this.root;
                     while(current){
                         if(current.val < new_node){
                             if(current.right){
