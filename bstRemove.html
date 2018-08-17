@@ -6,10 +6,10 @@
               if(!root){
                   return 0;
               }
+              console.log('root', root)
               var found = false;
               var parent = null;
               var current = root;
-          
           while(!found && current){
                 if(val < current.value){
                     parent = current;
@@ -19,26 +19,41 @@
                     current = current.right;
                 } else {
                     found = true;
+                 
                 }
           }
-                    console.log("parrent: ", parent,"current:", current)
-          if(parent.right.value === node && current.right || current.left){
+          console.log("parent right", parent.right,  parent.right.value, val)
+          if((parent.left || parent.right) && parent.right.value === val){
+              console.log('first if ')
               if(current.right){
+                  console.log('second if')
               parent.right = current.right;
-          }else{
+            }else{
+              console.log('else')
               parent.right = current.left;
                 }   
-          }else if(parent.left.value === node && current.right || current.left) {
+          }else if(parent.left && parent.left.value === val && (current.right || current.left)) {
+              console.log('parent left')
             if(current.right){
+                console.log('if')
                 parent.left = current.right;
+
             }else{
+
+              console.log('else')
                 parent.left = current.left
             }
             }else if(parent.right){
+                console.log('parent right else if')
                 parent.right = null;
             
             }else if(parent.left){
+                console.log('parent left else if')
+
                 parent.left = null;
+
+
+
             }
                
           
