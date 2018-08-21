@@ -1,4 +1,4 @@
-function $Dojo(id){
+(function $Dojo(id){
     this.myId = document.getElementById(id);
     this.click = function(callback){
         this.myId.addEventListener('click', callback)
@@ -9,4 +9,4 @@ function $Dojo(id){
         this.myId.addEventListener('mouseout', hoverOut);
         return this
     }
-}
+})();

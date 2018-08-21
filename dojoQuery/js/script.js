@@ -1,5 +1,5 @@
+console.log(djQuery)
 var one = new $Dojo('test')
-
 var clicked = function(){
     alert('been clicked')
 }

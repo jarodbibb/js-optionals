@@ -1,0 +1,27 @@
+<html>
+    <head><title> Fib using closures</title></head>
+    <body>
+        <script>
+            function fib() {
+                var arr = [0,1]
+                var sum;
+ 
+         function nacci() {
+            
+              sum = arr[arr.length -1] + arr[arr.length -2]
+            console.log(sum)
+             arr.push(sum)
+    // do something to those variables here
+  }
+  return nacci
+}
+var fibCounter = fib();
+fibCounter() // should console.log "1"
+fibCounter() // should console.log "1"
+fibCounter() // should console.log "2"
+fibCounter() // should console.log "3"
+fibCounter() // should console.log "5"
+fibCounter() 
+            </script>
+    </body>
+</html>
