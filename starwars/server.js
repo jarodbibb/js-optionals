@@ -6,11 +6,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "./static")));
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
+const axios = require('axios');
 app.get('/', function(req, res){
     res.render("main");
 })
-app.post('/users', function(req, res){
-    console.log("POST DATA", req.body);
+app.get('/people', function(req, res){
+    console.log("request: ", req.body)
+    axios.get("https://swapi.co/api/people")
+    .then(data => {
+        console.log('here');
+        res.data
+    })
+    .catch(error => {
+        console.log(error);
+        res.json(error)
+    })
+    
     res.redirect('/');
 })
 app.listen(8000, function(){
