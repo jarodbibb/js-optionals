@@ -12,9 +12,10 @@ app.get('/', function(req, res){
 })
 app.get('/people', function(req, res){
     console.log("request: ", req.body)
-    axios.get("https://swapi.co/api/people")
+    axios.get("https://swapi.co/api/people/1/")
+
     .then(data => {
-        console.log('here');
+        console.log('here', res);
         res.data
     })
     .catch(error => {
