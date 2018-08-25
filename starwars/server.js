@@ -10,22 +10,43 @@ const axios = require('axios');
 app.get('/', function(req, res){
     res.render("main");
 })
-app.get('/people', function(req, res){
-    console.log("request: ", req.body)
-    axios.get("https://swapi.co/api/people/1/")
-
-    .then(data => {
-        console.log('here', res);
-        res.data
-    })
-    .catch(error => {
-        console.log(error);
+var count = 0
+app.get('/people',  function(req, res){
+    count++
+    axios.get("https://swapi.co/api/people/?page=1").then(data => {
+       
+        res.json(data.data.results)
+    }).catch(error => {
+        
         res.json(error)
     })
     
-    res.redirect('/');
+    // res.redirect('/');
+})
+
+app.get('/people/next', function(req, res){
+    count++;
+    console.log("counnnnnnnnnnnnting:", count);
+    axios.get("https://swapi.co/api/people/?page=" + count).then(data=> {
+        res.json(data.data.results)
+    }).catch(error => {
+        res.json(error)
+    })
+
+
+})
+app.get('/people/previous', function(req, res){
+    count--;
+    console.log("counnnnnnnnnnnnting:", count);
+    axios.get("https://swapi.co/api/people/?page=" + count).then(data=> {
+        res.json(data.data.results)
+    }).catch(error => {
+        res.json(error)
+    })
+
+
 })
 app.listen(8000, function(){
-    console.log("listening on port")
+    console.log("listening on port 8000")
 })
 

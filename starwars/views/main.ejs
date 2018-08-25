@@ -2,19 +2,52 @@
     <head> 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script >$('document').ready(function(){
-            
+            var thing;
                    $('#people').click(function(){
-                       alert('clickity')
+                      
                     $.get('/people', function(data){
-                           console.log("got some people data: ", data)
+                        thing = "people"
+                        for(let i = 0; i < data.length; i++){
+                            $('#test').append("<p> " + data[i].name + "</p>")
+
+                        }
                        }, 'json');
 
+                   })
+                   $('#next').click(function(){
+                    $.get('/'+thing+'/next', function(data){
+                        for(let i = 0; i < data.length; i++){
+                            $('#test').prepend("<p>" + data[i].name + "</p>" )
+
+                        }
+                       }, 'json');
+                   
+                   })
+                   $('#previous').click(function(){
+                    $.get('/'+thing+'/previous', function(data){
+                        for(let i = 0; i < data.length; i++){
+                            $('#test').prepend("<p>" + data[i].name + "</p>")
+                        }
+                    }, 'json')
+                   })
+
+                   $('#planet').click(function(){
+                       $.get('/planet', function(data){
+                           thing = "planet";
+                           for(let i = 0; i < data.length; i++){
+                               $('#test').append('<p>' + data[i].name + '</p>')
+                           }
+                       })
                    })
                 })
                 </script>
     </head>
 <body>
     <h2>Here are all the users:</h2>
+    <div id="test"> </div>
+
+   <button id='next'> Next</button>
+   <button id='previous'>Previous</button>
     <button id='people'> People</button>
     <button id='places'>Places</button>
 </body>
