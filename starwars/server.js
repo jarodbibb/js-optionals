@@ -14,16 +14,11 @@ var count = 0
 app.get('/people',  function(req, res){
     count++
     axios.get("https://swapi.co/api/people/?page=1").then(data => {
-       
-        res.json(data.data.results)
+       res.json(data.data.results)
     }).catch(error => {
-        
         res.json(error)
-    })
-    
-    // res.redirect('/');
+    })// res.redirect('/');
 })
-
 app.get('/people/next', function(req, res){
     count++;
     console.log("counnnnnnnnnnnnting:", count);
@@ -32,8 +27,6 @@ app.get('/people/next', function(req, res){
     }).catch(error => {
         res.json(error)
     })
-
-
 })
 app.get('/people/previous', function(req, res){
     count--;
@@ -43,6 +36,46 @@ app.get('/people/previous', function(req, res){
     }).catch(error => {
         res.json(error)
     })
+})
+app.get('/planet',  function(req, res){
+    count++
+    axios.get("https://swapi.co/api/planets/?page=1").then(data => {
+       res.json(data.data.results)
+    }).catch(error => {
+        res.json(error)
+    })// res.redirect('/');
+})
+app.get('/planet/next', function(req, res){
+    count++;
+    console.log("counnnnnnnnnnnnting:", count);
+    axios.get("https://swapi.co/api/planets/?page=" + count).then(data=> {
+        res.json(data.data.results)
+    }).catch(error => {
+        res.json(error)
+    })
+
+
+})
+app.get('/planet/previous', function(req, res){
+    count--;
+    console.log("counnnnnnnnnnnnting:", count);
+    axios.get("https://swapi.co/api/planets/?page=" + count).then(data=> {
+        res.json(data.data.results)
+    }).catch(error => {
+        res.json(error)
+    })
+})
+app.get('/people/all', function (req, res){
+   
+       count ++
+    
+        axios.get("https://swapi.co/api/people/?page=" +count).then(data=> {
+            
+            res.json(data.data.results)
+        }).catch(error => {
+            res.json(error)
+        })
+    
 
 
 })

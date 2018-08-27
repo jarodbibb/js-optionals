@@ -30,8 +30,28 @@
                         }
                     }, 'json')
                    })
+                   var count = 1
+                   $('#all').click(function(){
+                    //    console.log('clicked')
+                       function recursion(count){
+                        count ++
+                       $.get('/'+ thing +'/all', function(data){
+                          
+                            for(let i = 0; i < data.length; i++){
+                            $('#test').prepend("<p>" + data[i].name + "</p>")
+                            console.log(count)
+                             if(count < 10){
+                                 console.log('inside if')
+                                 recursion(count)
+                             }
+                           }
+                       
+                   }, 'json')
+                }
+                recursion(count)
+                })
 
-                   $('#planet').click(function(){
+                   $('#places').click(function(){
                        $.get('/planet', function(data){
                            thing = "planet";
                            for(let i = 0; i < data.length; i++){
@@ -50,5 +70,6 @@
    <button id='previous'>Previous</button>
     <button id='people'> People</button>
     <button id='places'>Places</button>
+    <button id='all'> All</button>
 </body>
 </html>
