@@ -30,25 +30,15 @@
                         }
                     }, 'json')
                    })
-                   var count = 1
                    $('#all').click(function(){
-                    //    console.log('clicked')
-                       function recursion(count){
-                        count ++
-                       $.get('/'+ thing +'/all', function(data){
-                          
-                            for(let i = 0; i < data.length; i++){
-                            $('#test').prepend("<p>" + data[i].name + "</p>")
-                            console.log(count)
-                             if(count < 10){
-                                 console.log('inside if')
-                                 recursion(count)
-                             }
-                           }
-                       
-                   }, 'json')
-                }
-                recursion(count)
+                       console.log('clicked')
+                           $.get('/people/all', function(data){
+                              
+                                for(let i = 0; i < data.length; i++){
+                                $('#test').prepend("<p>" + data[i].name + "</p>")
+
+                                }
+                       }, 'json')
                 })
 
                    $('#places').click(function(){

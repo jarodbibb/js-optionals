@@ -65,18 +65,25 @@ app.get('/planet/previous', function(req, res){
         res.json(error)
     })
 })
-app.get('/people/all', function (req, res){
-   
-       count ++
-    
+app.get('/people/all', function(req, res){
+    console.log('in route')
+    function getStuffFromApi(resolve, reject){
+        console.log('in api callllll')
+        count ++;
         axios.get("https://swapi.co/api/people/?page=" +count).then(data=> {
             
             res.json(data.data.results)
         }).catch(error => {
             res.json(error)
         })
-    
-
+    }
+    function requestStuff(){
+       if(count < 10){
+           console.log('looping')
+            getStuffFromApi(resolve, reject)
+       }
+    }
+    requestStuff();
 
 })
 app.listen(8000, function(){
