@@ -12,18 +12,25 @@ app.get('/', function(req, res){
 })
 var count = 0
 app.get('/people',  function(req, res){
+   function gettingStuff(req, res){
     count++
     axios.get("https://swapi.co/api/people/?page=1").then(data => {
+        
        res.json(data.data.results)
     }).catch(error => {
         res.json(error)
     })// res.redirect('/');
+}
+gettingStuff(req, res)
+
 })
+var arr = []
 app.get('/people/next', function(req, res){
-    count++;
+    count++
     console.log("counnnnnnnnnnnnting:", count);
     axios.get("https://swapi.co/api/people/?page=" + count).then(data=> {
-        res.json(data.data.results)
+        arr.push(data.data.results)
+        console.log('arrrrr', arr)
     }).catch(error => {
         res.json(error)
     })
@@ -40,7 +47,8 @@ app.get('/people/previous', function(req, res){
 app.get('/planet',  function(req, res){
     count++
     axios.get("https://swapi.co/api/planets/?page=1").then(data => {
-       res.json(data.data.results)
+        
+        res.json(data.data.results)
     }).catch(error => {
         res.json(error)
     })// res.redirect('/');
@@ -66,24 +74,67 @@ app.get('/planet/previous', function(req, res){
     })
 })
 app.get('/people/all', function(req, res){
-    console.log('in route')
-    function getStuffFromApi(resolve, reject){
-        console.log('in api callllll')
-        count ++;
-        axios.get("https://swapi.co/api/people/?page=" +count).then(data=> {
-            
-            res.json(data.data.results)
+    while(count < 5){
+        count ++ 
+    console.log('testing:', count)
+    res.redirect('/people/next')
+}
+    function getStuffFromApi(req, res){
+        
+        
+        count++
+        console.log('in api heyyyyy', count)
+        if(count ===2){
+        axios.get("https://swapi.co/api/people/?page=", count).then(data=> {
+         console.log('en route to there', count)
+            if(count < 15){
+                console.log("1222222")
+                // getStuffFromApi(req, res)
+                res.json(data.data.results)
+            }
+        
         }).catch(error => {
-            res.json(error)
+            // res.json(error)
+            console.log("error")
         })
     }
-    function requestStuff(){
-       if(count < 10){
-           console.log('looping')
-            getStuffFromApi(resolve, reject)
-       }
-    }
-    requestStuff();
+
+//         count++
+//  if(count === 3){       axios.get("https://swapi.co/api/people/?page=", count).then(data=> {
+//             console.log('en route to there 3', count)
+//                if(count < 15){
+//                    console.log("33333333")
+//                    // getStuffFromApi(req, res)
+//                    res.json(data.data.results)
+//                }
+           
+//            }).catch(error => {
+//                // res.json(error)
+//                console.log("error")
+//            })
+//         }
+//            count++
+
+           axios.get("https://swapi.co/api/people/?page=",count).then(data=> {
+               console.log('444444444444444')
+                  if(count < 8){
+                      console.log("countin")
+                      getStuffFromApi(req, res)
+                      res.json(data.data.results)
+                  }
+              
+              }).catch(error => {
+                  // res.json(error)
+                  console.log("error")
+              })
+            }
+            
+    
+    getStuffFromApi(req, res)
+    console.log('calllin me')
+    
+    
+ 
 
 })
 app.listen(8000, function(){

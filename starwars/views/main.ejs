@@ -32,7 +32,8 @@
                    })
                    $('#all').click(function(){
                        console.log('clicked')
-                           $.get('/people/all', function(data){
+                       $.get('/people/all', function(data){
+                        console.log(data[0].name)
                               
                                 for(let i = 0; i < data.length; i++){
                                 $('#test').prepend("<p>" + data[i].name + "</p>")
