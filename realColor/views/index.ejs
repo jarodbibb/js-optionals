@@ -1,0 +1,35 @@
+<html>
+    <head><title>
+        Real time color picker
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+$(document).ready(function(){
+    var socket = io();
+    socket.on('connected', function(data){
+        $("#background").css({backgroundColor: data.color })
+    })
+    $('button').click(function(){
+        var id = $(this).attr('id')
+        console.log(id)
+        socket.emit('selectedColor', {color: id})
+        socket.on('changed', function(data){
+            $("#background").css({backgroundColor: data.msg })
+        })
+    })
+
+})
+        </script>
+
+</head>
+<div id="background">
+<button id="green"> Green</button>
+<button id="blue"> Blue</button>
+<button id="pink"> Pink</button>
+
+</div>
+
+
+</html>

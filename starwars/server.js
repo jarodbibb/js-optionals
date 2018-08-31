@@ -29,7 +29,7 @@ app.get('/people/next', function(req, res){
     count++
     console.log("counnnnnnnnnnnnting:", count);
     axios.get("https://swapi.co/api/people/?page=" + count).then(data=> {
-        arr.push(data.data.results)
+        res.json(data.data.results)
         console.log('arrrrr', arr)
     }).catch(error => {
         res.json(error)
@@ -74,11 +74,11 @@ app.get('/planet/previous', function(req, res){
     })
 })
 app.get('/people/all', function(req, res){
-    while(count < 5){
-        count ++ 
-    console.log('testing:', count)
-    res.redirect('/people/next')
-}
+    // while(count < 5){
+    //     count ++ 
+    // console.log('testing:', count)
+    // res.redirect('/people/next')
+// }
     function getStuffFromApi(req, res){
         
         
@@ -89,8 +89,8 @@ app.get('/people/all', function(req, res){
          console.log('en route to there', count)
             if(count < 15){
                 console.log("1222222")
-                // getStuffFromApi(req, res)
                 res.json(data.data.results)
+                return getStuffFromApi(req, res)
             }
         
         }).catch(error => {
@@ -113,7 +113,7 @@ app.get('/people/all', function(req, res){
 //                console.log("error")
 //            })
 //         }
-//            count++
+           count++
 
            axios.get("https://swapi.co/api/people/?page=",count).then(data=> {
                console.log('444444444444444')
