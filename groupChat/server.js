@@ -8,11 +8,11 @@ const server = app.listen(1337);
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 const io = require('socket.io').listen(server);
+var chat = [];
+var members = {};
 app.get('/', function(req, res){
     res.render('index')
 })
-var chat = [];
-var members = {};
 io.on('connection', function(socket){
     socket.on('newPerson', function(data){
         members.name = data.name
@@ -24,6 +24,10 @@ io.on('connection', function(socket){
         chat.push(data);
         io.emit('message', chat )
     })
+
+     socket.on('disconnect', function(){
+    console.log('Socket ' + socket.id + ' has disconnected from our chatroom!');
+  })
 })
 
 

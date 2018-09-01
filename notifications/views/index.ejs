@@ -1,0 +1,35 @@
+<html>
+    <head> <title> Notifications</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();
+            $(document).ready(function(){
+                socket.on('joined', function(data){
+                    $('#chat').append("<p>socket " + data + " has joined us</p>")
+                })
+                socket.on('disconnect', function(data){
+                    $('#chat').append("<p>Socket " + data + " has left us</p>")
+                })
+                $('button').click(function(){
+                    socket.emit('pushed')
+                })
+                socket.on('message', function(data){
+                    $('#chat').append('<p> the button has been pushed by socket ' + data + "</p>")
+                })
+            })
+
+            </script> 
+    </head>
+    <body>
+            <div id='main'>
+                    <h4> Conversation</h4>
+                    <div id="chat">
+        
+                    </div>
+                    <button> Tell everyone</button>
+        
+                </div>
+    </body>
+</html>
