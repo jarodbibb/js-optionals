@@ -3,3 +3,11 @@
     <p>Name: <a href="<%='/mongoose/' + animal[anim]._id %>"><%=animal[anim].name%></a></p>
         <p> Age: <%= animal[anim].age %></p>
         <% } %>
+
+        <%- JSON.stringify(messages) %> 
+<!-- based on the structure of your messages, determine how to display them -->
+<% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+ <% } %>

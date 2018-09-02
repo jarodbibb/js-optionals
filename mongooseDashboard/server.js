@@ -7,9 +7,11 @@ app.use(express.static(path.join(__dirname, './static')));
 const server = app.listen(1337);
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
+var session = require('express-session')
+app.use(session( {  secret:"jaros"}));
 const io = require('socket.io').listen(server);
-// const flash = require('express-flash');
-// app.use(flash());
+const flash = require('express-flash');
+app.use(flash());
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/basic_mongoose');
@@ -23,6 +25,8 @@ var Animal = mongoose.model('Animal')
 
 app.get('/', function(req, res){
     Animal.find({}, function(err, animals){
+        if(err){
+        }
         console.log(animals);
         res.render('index', {animal: animals})
     })
@@ -33,14 +37,18 @@ app.get('/new', function(req, res){
 })
 app.post('/mongooses', function(req, res){
     var animal = new Animal({name: req.body.name, age: req.body.age})
-  animal.save(function(err){
-      console.log('inside save')
-      if(err){
-          console.log('did not save animal')
-      } else{
+    animal.save(function(err){
+        console.log('inside save')
+        if(err){
+            
+            for(var key in err.errors){
+                req.flash('registration', err.errors[key].message)
+            }
+            console.log('did not save animal')
+        } else{
           console.log('successfully save new animal')
-          res.redirect('/');
-      }
+        }
+        res.redirect('/');
   })
 })
   app.get('/mongoose/:id', function(req, res){
