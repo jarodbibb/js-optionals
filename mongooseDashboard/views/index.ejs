@@ -1,0 +1,5 @@
+  <% for( var anim in animal) { %>
+   
+    <p>Name: <a href="<%='/mongoose/' + animal[anim]._id %>"><%=animal[anim].name%></a></p>
+        <p> Age: <%= animal[anim].age %></p>
+        <% } %>
