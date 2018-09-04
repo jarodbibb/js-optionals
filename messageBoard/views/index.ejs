@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Message Boards</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+       <script>
+           var socket = io()
+           $(document).ready(function(){
+            //    console.log('hopefullyall', data)
+               $('#messes').submit(function(data){
+                    data.preventDefault();
+                    
+                var info =  {
+                name: $('input[name="name"]').val(),
+                message: $('input[name="message"]').val()
+            }
+                   socket.emit('newMessage', info)
+                   
+               })
+               socket.on('saved', function(message){
+                   $('#content').append("<div><h2>"+message.name+"</h2<p>Message: "+message.messContent+"</p><h2>Leave a comment</h2><div id='comments'><form id='comments'><label>Name: </label><input type='text' name='name'><label>Message: </label><input type='text' name='message'><input type='submit'> </form></div></div>")
+               })
+               $('#newcomments').submit(function(data){
+                console.log('finding out what is in',data)
+                   var info = {
+                
+                       name: $('input[name="name"]').val(),
+                       message: $('input[name="message"]').val(),
+                   }
+                   socket.emit('commenting', info)
+                //    return false
+                data.preventDefault();
+
+               })
+             socket.on('commentSaved', function(data){
+                 $('')
+             })
+           })
+        </script>
+    </head>
+    <body>
+        <h1> Message Board</h1>
+        <form id = 'messes'>
+            <label>Name: </label>
+            <input type="text" name="name">
+            <label>Message: </label>
+            <input type="text" name="message">
+            <input type="submit">
+        </form>
+  <div id='content'>
+    <% for( var messag in message){ %>
+        <h2><%= message[messag].name %></h2>
+         <p>Message: <%= message[messag].messContent %></p>
+        </div>
+        <h2> Leave a comment </h2>
+
+        <div>
+                <form id='newcomments'>
+                        <label>Name: </label>
+                        <input type="text" name="name">
+                        <label>Message: </label>
+                        <input type="text" name="message">
+                        <input type="submit">
+                    </form>
+
+                    <% } %>
+        </div>
+        <div>
+            <div id="messages">
+
+            </div>
+
+        </div>
+    </body>
+</html>
