@@ -18,18 +18,19 @@
                    
                })
                socket.on('saved', function(message){
-                   $('#content').append("<div><h2>"+message.name+"</h2<p>Message: "+message.messContent+"</p><h2>Leave a comment</h2><div id='comments'><form id='comments'><label>Name: </label><input type='text' name='name'><label>Message: </label><input type='text' name='message'><input type='submit'> </form></div></div>")
+                   $('#content').append("<div><h2>"+message.name+"</h2><p>Message: "+message.messContent+"</p><div id='comments'></div></div>")
                })
                $('#newcomments').submit(function(data){
-                console.log('finding out what is in',data)
+                   data.preventDefault();
+               
                    var info = {
-                
-                       name: $('input[name="name"]').val(),
-                       message: $('input[name="message"]').val(),
+                        messId: $('input[name="messId"]').val(),
+                       name: $('input[name="commentname"]').val(),
+                       message: $('input[name="comment"]').val(),
                    }
+                  
                    socket.emit('commenting', info)
                 //    return false
-                data.preventDefault();
 
                })
              socket.on('commentSaved', function(data){
@@ -51,25 +52,27 @@
     <% for( var messag in message){ %>
         <h2><%= message[messag].name %></h2>
          <p>Message: <%= message[messag].messContent %></p>
+         <% var x = message[messag].comments %>
+         <% if(x){ %>
+            <% for (let i = 0; i < message[messag].comments.length; i++){ %>
+                <p>     Name: <%= message[messag].comments[i].name %> </p>
+                <p>     Comment: <%= message[messag].comments[i].content %> </p>
+          <% }} %>
         </div>
         <h2> Leave a comment </h2>
 
         <div>
                 <form id='newcomments'>
                         <label>Name: </label>
-                        <input type="text" name="name">
+                        <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
+                        <input type="text" name="commentname">
                         <label>Message: </label>
-                        <input type="text" name="message">
+                        <input type="text" name="comment">
                         <input type="submit">
                     </form>
 
+                </div>
                     <% } %>
-        </div>
-        <div>
-            <div id="messages">
-
-            </div>
-
-        </div>
+      
     </body>
 </html>

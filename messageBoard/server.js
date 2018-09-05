@@ -36,6 +36,7 @@ app.get('/', function(req, res){
         }else{
             // for(let i = 0; i< messages.length; i++){
             //     console.log('for loopin', messages[i])
+           
             // }
             res.render('index',{message: messages})
         }
@@ -46,7 +47,6 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
     socket.on('newMessage', function(data){
         var message = new Message({name: data.name, messContent: data.message});
-       console.log('messages', message)
         message.save(function(err){
             if(err){
                 console.log('we errorin')
@@ -60,7 +60,6 @@ io.on('connection', function(socket){
 
     })
     socket.on('commenting',function(data){
-        console.log('we back up in here')
         // console.log('we commenting this thang', data)
         // var comment = new Comment({name: data.name, content: data.message});
         // comment.save(function(err){
@@ -71,12 +70,24 @@ io.on('connection', function(socket){
         //     }
 
         // })
-        Comment.create({name: data.name, content:data.message}, function(err, data){
+   
+        Comment.create({name: data.name, content:data.message}, function(err, comment){
             if(err){
                 console.log("comment didn't create")
             }else{
-                console.log('working')
-                Message.findOndandUpdate({})
+                console.log('working', data.messId)
+                console.log('new comments id', comment._id)
+                Message.findOneAndUpdate({_id: data.messId}, {$push:{"comments": comment}}, function(err, data){
+                    // Message.findOne({_id:data.messId }, function(err, data){
+                   console.log('data from message', data)
+                    if(data){
+                        console.log('it worked ', data.comments[0])
+                        console.log('data', data)
+                        socket.emit('commentSaved', {comments: comment})
+                    }else{
+                        console.log('did not save comment')
+                    }
+                })
             }
         })
     })
