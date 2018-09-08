@@ -51,117 +51,36 @@
   <div id='content'>
     <% for( var messag in message){ %>
         <h2><%= message[messag].name %></h2>
-         <p>Message: <%= message[messag].messContent %></p>
          <% var x = message[messag].comments %>
-         <% if(x){ %>
+         <% if(message[messag]){ %>
             <% for (let i = 0; i < message[messag].comments.length; i++){ %>
-                <p>     Name: <%= message[messag].comments[i].name %> </p>
+                <p><%= message[messag].comments[i] %> </p>
+                <p> Name: <%= message[messag].comments[i].name %></p>
                 <p>     Comment: <%= message[messag].comments[i].content %> </p>
-          <% }} %>
-        </div>
-        <h2> Leave a comment </h2>
-
-        <div>
+            </div>
+            <h2> Leave a comment </h2>
+            
+            <div>
                 <form id='newcomments'>
-                        <label>Name: </label>
+                    <label>Name: </label>
+                    
+                    <%=   console.log('messId',  message[messag]._id )%>
+                    
                         <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
                         <input type="text" name="commentname">
                         <label>Message: </label>
                         <input type="text" name="comment">
                         <input type="submit">
                     </form>
+                    <% }} %>
 
-                </div>
-                <div>
-                        <form id='newcomments'>
-                                <label>Name: </label>
-                                <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                <input type="text" name="commentname">
-                                <label>Message: </label>
-                                <input type="text" name="comment">
-                                <input type="submit">
-                            </form>
-        
-                        </div>
-                        <div>
-                                <form id='newcomments'>
-                                        <label>Name: </label>
-                                        <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                        <input type="text" name="commentname">
-                                        <label>Message: </label>
-                                        <input type="text" name="comment">
-                                        <input type="submit">
-                                    </form>
-                
-                                </div>
-                                <div>
-                                        <form id='newcomments'>
-                                                <label>Name: </label>
-                                                <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                                <input type="text" name="commentname">
-                                                <label>Message: </label>
-                                                <input type="text" name="comment">
-                                                <input type="submit">
-                                            </form>
-                        
-                                        </div>
-                                        <div>
-                                                <form id='newcomments'>
-                                                        <label>Name: </label>
-                                                        <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                                        <input type="text" name="commentname">
-                                                        <label>Message: </label>
-                                                        <input type="text" name="comment">
-                                                        <input type="submit">
-                                                    </form>
-                                
-                                                </div>
-                                                <div>
-                                                        <form id='newcomments'>
-                                                                <label>Name: </label>
-                                                                <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                                                <input type="text" name="commentname">
-                                                                <label>Message: </label>
-                                                                <input type="text" name="comment">
-                                                                <input type="submit">
-                                                            </form>
-                                        
-                                                        </div>
-                                                        <div>
-                                                                <form id='newcomments'>
-                                                                        <label>Name: </label>
-                                                                        <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                                                        <input type="text" name="commentname">
-                                                                        <label>Message: </label>
-                                                                        <input type="text" name="comment">
-                                                                        <input type="submit">
-                                                                    </form>
-                                                
-                                                                </div>
+                    <% } %>
+        </div>
+        <div>
+            <div id="messages">
 
-                                                                <div>
-                                                                        <form id='newcomments'>
-                                                                                <label>Name: </label>
-                                                                                <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                                                                <input type="text" name="commentname">
-                                                                                <label>Message: </label>
-                                                                                <input type="text" name="comment">
-                                                                                <input type="submit">
-                                                                            </form>
-                                                        
-                                                                        </div>
-                                                                        <div>
-                                                                                <form id='newcomments'>
-                                                                                        <label>Name: </label>
-                                                                                        <input type="hidden" id="messId" name="messId" value=<%= message[messag]._id %>>
-                                                                                        <input type="text" name="commentname">
-                                                                                        <label>Message: </label>
-                                                                                        <input type="text" name="comment">
-                                                                                        <input type="submit">
-                                                                                    </form>
-                                                                
-                                                                                </div>
-                <% } %>
-      
+            </div>
+
+        </div>
     </body>
 </html>
