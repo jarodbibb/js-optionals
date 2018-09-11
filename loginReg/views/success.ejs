@@ -1,0 +1,13 @@
+<h1> Success</h1>
+
+<form method="POST" action="/secret">
+<label> Secret: </label>
+<input type="string" name="secret">
+<input type="submit">
+</form>
+<% if(secrets){ %>
+    <% for (var i = 0; i < secrets.length; i++){ %>
+       <p><a href="/comments/ <%= secrets[i]._id %>">  <%= secrets[i].secret %> </a> </p>
+        <% }} %>
+
+

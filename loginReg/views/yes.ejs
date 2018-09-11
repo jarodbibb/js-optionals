@@ -1,0 +1,10 @@
+<h1> hello</h1>
+<%= secret.secret %>
+<% for( var i = 0; i < secret.length; i++){%>
+<p><%= secret[i].comment %></p>
+<% } %>
+<form method="POST" action='/notes/ + <%= secret._id %>'>
+    <label> Note: </label>
+    <input type="text" name="note">
+    <input type="submit">
+</form>
