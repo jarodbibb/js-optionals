@@ -1,7 +1,7 @@
-<h1> hello</h1>
-<%= secret.secret %>
-<% for( var i = 0; i < secret.length; i++){%>
-<p><%= secret[i].comment %></p>
+<h1> YES</h1>
+<h3>Should be secret:<%= secret.secret %></h3>
+<% for( var i = 0; i < secret.comments.size; i++){%>
+<p><%= secret.comments[i].comment %></p>
 <% } %>
 <form method="POST" action='/notes/ + <%= secret._id %>'>
     <label> Note: </label>

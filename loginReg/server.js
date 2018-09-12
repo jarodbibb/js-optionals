@@ -40,6 +40,7 @@ var CommentSchema = new mongoose.Schema({
 })
 mongoose.model('Comment', CommentSchema)
 var Comment = mongoose.model('Comment')
+
 var SecretSchema = new mongoose.Schema({
     secret: {type: String, required:[true, 'secret can not be blank'], minlength: [2, 'leave a real secret'] },
     user: {type: String},
@@ -51,27 +52,33 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 app.post('/notes/:id', (req, res)=>{
-    Secret.findOne({ id: req.params._id}, (err, data)=>{
+    console.log('req.body note', req.body.note)
+
+    Comment.create( {comment: req.body.note}, (err, commentData) =>{
+        if(err){
+            console.log('comment did commentData save')
+        }else{
+            
+            console.log('commentDatae', commentData)
+    Secret.findOneAndUpdate({ id: req.params._id},{$push: {comments: commentData}},{new: true}, (err, data)=>{
+            console.log('find one and update secret data', data )
+            console.log('find one upsdate not', commentData)
         if(err){
             console.log('did not load')
         }else{
-            console.log('getting data for secrets should be only one', data._id)
-            Comment.create( {comment: req.body.note}, (err, not) =>{
-                if(err){
-                    console.log('comment did not save')
-                }else{
-                    console.log('data comments', data.comments)
-                    data.comments.push(not)
-                    console.log('saved comment',data.comments)
-                    res.render('yes', {secret: data.comments})
+                        res.render('yes', {secret: data})
                 }
             } )
         }
     })
 
 })
-app.get('/comments/:id', (req, res)=> {
-        Secret.findOne({ id: req.params._id}, (err, data)=>{
+app.get('/getSecret/:id', (req, res) => {
+    var str = req.params.id;
+    // var string = toString(req.params.id)
+    console.log('req params id', str.substring(1))
+
+        Secret.findById(str.substring(1), (err, data) =>{
             if(err){
                 console.log('did not load')
             }else{
@@ -97,7 +104,7 @@ app.get('/success', (req, res)=> {
         if(err){
             console.log('could not find secrets')
         } else {
-            console.log('data from secrets ', data[0]._id)
+            console.log('data from secrets ', data)
             res.render('success', {secrets: data})
         }
     })

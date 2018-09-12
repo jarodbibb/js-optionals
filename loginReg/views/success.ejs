@@ -7,7 +7,8 @@
 </form>
 <% if(secrets){ %>
     <% for (var i = 0; i < secrets.length; i++){ %>
-       <p><a href="/comments/ <%= secrets[i]._id %>">  <%= secrets[i].secret %> </a> </p>
-        <% }} %>
+       <p><a href="/getSecret/<%= secrets[i]._id %>">  <%= secrets[i].secret %> </a> </p>
+   
+               <% }} %>
 
 
