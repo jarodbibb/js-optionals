@@ -1,6 +1,14 @@
+<!-- <script>
+    $(Document).ready(function(){
+        $('#delete').click( function(){
+            window.location.href ='/delete'
+        })
+    })
+</script> -->
 <h1> Success</h1>
 
-<form method="POST" action="/secret">
+
+<form method="POST" action="/secret/<%=userI%>" >
 <label> Secret: </label>
 <input type="string" name="secret">
 <input type="submit">
@@ -8,6 +16,10 @@
 <% if(secrets){ %>
     <% for (var i = 0; i < secrets.length; i++){ %>
        <p><a href="/getSecret/<%= secrets[i]._id %>">  <%= secrets[i].secret %> </a> </p>
+      <% if(secrets[i].user == userI){ %>
+       <a href='/delete/<%= secrets[i]._id%>/<%=userI%>'> <button >Delete</button> </a>
+
+     <% } %>
    
                <% }} %>
 
