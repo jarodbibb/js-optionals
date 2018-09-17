@@ -4,7 +4,7 @@ const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 // const bcrypt = require('bcrypt-as-promised');
-app.use(express.static(path.join(__dirname, './static')));
+app.use(express.static( __dirname + '/public/dist/public' ));
 const server = app.listen(1337);
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
