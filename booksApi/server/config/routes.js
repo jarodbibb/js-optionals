@@ -1,18 +1,24 @@
 const mongoose = require('mongoose');
-const books = require('../controllers/books.js');
+const authors = require('../controllers/authors.js');
+
 
 module.exports = function(app){
-    app.get('/', (req, res) => {
-        books.getAll(req, res)
+    
+    app.get('/author', (req, res) => {
+        console.log('index route')
+        authors.getAll(req, res)
     })
-    app.get('/book/:id', (req, res) => {
-        books.getOne(req, res)
+    app.get('/author/:id', (req, res) => {
+        authors.getOne(req, res)
     })
-    app.post('/book/:id', (req, res) => {
-        books.create(req, res)
+    app.post('/author/:id', (req, res) => {
+        authors.create(req, res)
     })
     app.get('/delete/:id', (req, res)=> {
-        books.delete(req, res)
+        authors.delete(req, res)
+    })
+    app.put('/edit/:id', (req, res) => {
+        authors.edit(req, res)
     })
 
 }
