@@ -8,8 +8,10 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  newTask: any;
   constructor(private _httpService: HttpService){}
   ngOnInit(){
+    this.newTask = { title:"", description: ""}
     this.getAuthorsFromService()
   }
   tasks = []
@@ -21,5 +23,8 @@ export class AppComponent implements OnInit {
     this.tasks = data['tasks']
   })
     
+  }
+  onSubmit() {
+    this.newTask = {title: "", description: ""}
   }
 }
