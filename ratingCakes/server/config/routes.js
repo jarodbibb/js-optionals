@@ -2,7 +2,7 @@ var Cakes = require('../controllers/cakes.js');
 var mongoose = require('mongoose');
 
 module.exports = function(app){
-    app.get('/', function(req, res){
+    app.get('/cake', function(req, res){
         Cakes.getAll(req, res)
     })
     app.post('/cake', (req,res)=>{

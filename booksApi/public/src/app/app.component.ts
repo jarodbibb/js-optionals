@@ -7,7 +7,7 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  title = 'Mean';
   newTask: any;
   constructor(private _httpService: HttpService){}
   ngOnInit(){
