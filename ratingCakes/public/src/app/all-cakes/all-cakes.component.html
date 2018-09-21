@@ -1,0 +1,19 @@
+<p>
+  all-cakes works!
+  </p>
+  <div *ngFor="let cake of cakes">
+    <p>{{cake.baker}}</p>
+    <p> {{cake.image}}</p>
+    <p>{{ cake._id }} </p>
+    <img [src]="cake.image" alt="still not working ">
+
+    <form (submit)= 'rateCake(cake._id)'>
+     <p> {{newRatings | json}}</p>
+      <label> Stars: </label>
+      <input type='number' name='newRatings.stars' [(ngModel)]= 'newRatings.stars'>
+      <input type="string" name="newRatings.comment" [(ngModel)]= 'newRatings.comment'>
+      <input type="submit">
+    </form>
+
+</div>
+

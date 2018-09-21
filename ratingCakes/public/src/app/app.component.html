@@ -18,6 +18,18 @@
   </li>
 </ul>
 <div>
-  <form 
+  <form (submit) = 'submitCake()'>
+    <p> {{newCake | json }} </p>
+    <label> Baker: </label>
+    <input type="text" name="newCake.baker" [(ngModel)]="newCake.baker"/>
+    <label> Image URL: </label>
+    <input type="text" name="newCake.image" [(ngModel)]="newCake.image"/>
+    <input type="submit" value="create cake"/>
+  </form>
 </div>
+<div> 
+  <p *ngFor = "let cake"></p>
+</div>
+<app-one></app-one>
+<app-all-cakes></app-all-cakes>
 

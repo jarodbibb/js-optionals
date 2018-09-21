@@ -10,5 +10,11 @@ export class HttpService {
   getCakes() {
     return this._http.get('/cake')
   }
+  createCake(newCake){
+    return this._http.post('/cake', newCake)
+  }
+  rateCake(newRating, id){
+    return this._http.post('/cake/'+id, newRating)
+  }
 }
 

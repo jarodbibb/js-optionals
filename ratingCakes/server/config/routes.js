@@ -9,7 +9,7 @@ module.exports = function(app){
 
         Cakes.create(req, res);
     })
-    app.put('cake/:id', (req, res)=> {
+    app.post('cake/:id', (req, res)=> {
         Cakes.update(req, res)
     })
     app.get('/cakes/:id',(req, res)=> {

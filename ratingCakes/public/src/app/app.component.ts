@@ -7,19 +7,52 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  newCake: any;
   constructor(private _httpService: HttpService){}
   ngOnInit(){
-    this.getCakesFromService();
+    this.newCake = {baker: "", image: ""}
+   
     }
-    cakes = [];
-    getCakesFromService(){
-      let observable = this._httpService.getCakes();
-      observable.subscribe(data => {
-        console.log("Got our cakes!", data)
-        // In this example, the array of tasks is assigned to the key 'tasks' in the data object. 
-        // This may be different for you, depending on how you set up your Task API.
-        this.cakes = data['cakes'];
-        console.log('this.cakes')
+   
+    getOneCakeFromService(){
+      let observable  = this._httpService.getCakes();
+    observable.subscribe(data => {
+      console.log('this got cake', data)
+    })    }
+    submitCake(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+     let observable = this._httpService.createCake(this.newCake);
+     observable.subscribe(data => {
+       console.log("Baking a beautifull cake")
      })
     }
 }
