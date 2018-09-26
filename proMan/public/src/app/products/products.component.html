@@ -1,0 +1,16 @@
+<h5>Products List</h5>
+
+<div *ngFor = "let product of products">
+  <div>
+  <img [src]='product.img' alt='cant load image' height ='50' width='50'>
+</div>
+<div>
+  <span >Title: {{product.title}}</span>
+  <span> Price: {{product.price}}</span>
+</div>
+  <button [routerLink] = "['edit', product._id]">Edit</button>
+</div>
+<p>
+  
+  <router-outlet></router-outlet>
+</p>

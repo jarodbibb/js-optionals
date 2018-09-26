@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h3>Project Product Management</h3>
+<div>
+ <a routerLink="/">Home</a>                  
+   <a routerLink="/products">Products List</a>
+ <a [routerLink]="['/products', 'new']">Product Creation</a>
+</div>
+<div>
+  <h5>Home Page</h5>
+  <p>Welvome to Project Product</p>
+  <p>Management! Here we can </p>
+  <p>manage a set of products</p>
+  <p>You are able to create</p>
+  <p>products, remove old</p>
+  <p>products, and edit products</p>
+</div>
+<router-outlet></router-outlet>
