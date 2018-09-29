@@ -9,8 +9,10 @@
   <span> Price: {{product.price}}</span>
 </div>
   <button [routerLink] = "['edit', product._id]">Edit</button>
+  <button (click) = "delete(product._id)">Delete</button>
 </div>
-<p>
-  
+  <p *ngIf = '!display'>Displayed</p>
+  <p *ngIf = 'display'>should not</p>
   <router-outlet></router-outlet>
-</p>
+  <app-edit (aTaskEventEmitter)="dataFromChild($event)"> </app-edit>
+

@@ -31,6 +31,7 @@ module.exports = {
         })
     },
     delete: function(req, res){
+        console.log('in delete req.params', req.params.id)
         Product.remove({_id: req.params.id}, (err, result)=>{
             if(err){
                 res.json({message: "Error", data: result})
@@ -40,7 +41,8 @@ module.exports = {
         })
     },
     update: function(req, res){
-        Product.update({_id: req.params.id},{$set: req.body}, (err, result)=> {
+        console.log('req body', req.body.price)
+        Product.update({_id: req.params.id},{$set: {title: req.body.title, price: req.body.price} }, (err, result)=> {
             if(err){
                 res.json({message:"error", data: result})
             }else{

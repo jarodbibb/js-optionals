@@ -17,7 +17,12 @@ export class HttpService {
   getOne(id){
     return this._http.get('/product/' + id.id);
   }
-  updateProduct(product, id){
-    return this._http.put()
+  updateProduct(product){
+    console.log('id in update product', product.id)
+    return this._http.put('/product/' + product.id, product.product)
+  }
+  delete(id){
+    console.log('delete service', id)
+    return this._http.delete('/product/' + id)
   }
 }

@@ -11,7 +11,8 @@ module.exports = function(app){
     app.get('/product/:id', (req, res) => {
         Products.getOne(req, res)
     })
-    app.put('product/:id', (req, res)=>{
+    app.put('/product/:id', (req, res)=>{
+        console.log('in routes', req.params.id)
         Products.update(req, res)
     })
     app.delete('/product/:id', function(req, res){

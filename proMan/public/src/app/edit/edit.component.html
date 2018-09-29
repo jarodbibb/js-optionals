@@ -1,7 +1,8 @@
-<form (submit)='update()'>
+<form (submit)='update($event)'>
   <label>Title:</label>
   <input type="text" name="new.title" [(ngModel)]='new.title' [value]='product.title'>
   <input type='number' name="new.price" [(ngModel)]='new.price' [value] ='product.price'>
   <input type="submit">
 
 </form>
+<button (click)='triggerEvent($event)'>test</button>

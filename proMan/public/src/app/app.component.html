@@ -5,7 +5,7 @@
    <a routerLink="/products">Products List</a>
  <a [routerLink]="['/products', 'new']">Product Creation</a>
 </div>
-<div>
+<div *ngIf= "!display">
   <h5>Home Page</h5>
   <p>Welvome to Project Product</p>
   <p>Management! Here we can </p>
@@ -15,3 +15,4 @@
   <p>products, and edit products</p>
 </div>
 <router-outlet></router-outlet>
+
