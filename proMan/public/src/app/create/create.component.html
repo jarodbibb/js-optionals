@@ -1,11 +1,17 @@
 <h5>Create a New Product</h5>
 <form (submit)= 'newProduct()'>
   <label> Title: </label>
-  <input type='text' name='product.title' [(ngModel)]= 'product["title"]'>
+  <input type='text' name='product.title' [(ngModel)]= 'product["title"]' minlength="2" maxlength="24" #title = "ngModel" required>
+  {{title.errors | json}}
+  {{title.valid | json}}
   <label>Price</label>
-  <input type='number' name='product.price' [(ngModel)] = 'product["price"]'>
+  <input type='number' name='product.price' [(ngModel)] = 'product["price"]' min= "0" max=99999999 #price= "ngModel" required>
+  {{ price.errors | json }}
+{{ price.valid | json }}
   <label>Image Url: </label>
-  <input type='text' name='product.img' [(ngModel)] = 'product["img"]'>
+  <input type='text' name='product.img' [(ngModel)] = 'product["img"]' minlength="6" maxlength="76" #img="ngModel" required>
+  {{img.errors | json }}
+  {{ img.valid | json}}
   <input type='submit'>
 
 </form>

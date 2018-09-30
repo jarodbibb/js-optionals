@@ -17,7 +17,15 @@ pro = new Pro();
   ngOnInit() {
     this.product = { title: "", img: "", price: ""}
   }
+  validation(){
+    this.product.push(this.pro)
+    this.pro = new Pro;
+    console.log('after observable and validation')
+    this.newProduct()
+  }
   newProduct(){
+    console.log('in new product')
+    
     let observable = this._httpService.createProduct(this.product);
     observable.subscribe(data => {
       if(data['message'] === "Error"){
