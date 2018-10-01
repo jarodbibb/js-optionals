@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class CreateComponent implements OnInit {
 newNote: any;
+addNote: [any];
 
 
   constructor(private _httpService: HttpService, private router: Router) { }
@@ -25,6 +26,10 @@ newNote: any;
       if(data['message'] === "Error"){
         console.log('we errorin out')
       }else{
+        console.log('testing data in new ', data['data'])
+        this.addNote= data['data']
+        this.router.navigate(['display', this.addNote])
+       
         
       }
     })

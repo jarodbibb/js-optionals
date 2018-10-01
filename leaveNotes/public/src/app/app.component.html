@@ -4,8 +4,30 @@
     Welcome to Notes!
   </h1>
 </div>
-
+<div>
+    <form (submit)= 'new()'>
+      <p> {{newNote | json }}</p>
+        <label>Note:</label>
+        <input type='text' name="newNote.message" [(ngModel)] ="newNote['message']">
+        <input type="submit">
+    </form>
+  </div>
+  <!-- <perfect-scrollbar style="max-width: 600px; max-height: 400px;" [config]="config">
+      <div>Scrollable content</div> -->
+      <div *ngIf='test' >
+        
+        <div *ngFor= ' let add of addNote' class="box">
+          <p>Noted At: {{add.createdAt}}</p>
+          <p>Message: {{add.message}}</p>
+        </div>
+      </div>
+      <div *ngFor='let message of messages' class="box">
+        <p>Noted at: {{message.createdAt}}</p>
+        <p> Message: {{ message.message}} </p>
+      </div>
+    <!-- </perfect-scrollbar> -->
+      
 
 <router-outlet></router-outlet>
-<app-create></app-create>
-<app-display></app-display>
+<!-- <app-create></app-create>
+<app-display></app-display> -->

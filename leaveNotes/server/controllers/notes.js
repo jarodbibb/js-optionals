@@ -3,7 +3,7 @@ var Note = mongoose.model('Note')
 
 module.exports = {
     getAll: (req, res)=> {
-        Note.find({}, (err, data)=> {
+        Note.find({}).sort({createdAt: -1}).exec((err, data)=> {
             if(err){
                 res.json({message: "Error", data: err})
             }else{
