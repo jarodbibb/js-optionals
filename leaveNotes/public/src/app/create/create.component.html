@@ -1,0 +1,10 @@
+<div>
+  <form (submit)= 'new()'>
+    <p> {{newNote | json }}</p>
+      <label>Note:</label>
+      <input type='text' name="newNote.message" [(ngModel)] ="newNote['message']">
+      <input type="submit">
+  </form>
+</div>
+ 
+

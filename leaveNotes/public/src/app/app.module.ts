@@ -1,24 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpService } from './http.service';
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { DisplayComponent } from './display/display.component';
+import { CreateComponent } from './create/create.component';
+import {HttpService} from './http.service';
 import { FormsModule } from '@angular/forms';
-import { AllCakesComponent } from './all-cakes/all-cakes.component';
-import { OneComponent } from './one/one.component';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    AllCakesComponent,
-    OneComponent
+    DisplayComponent,
+    CreateComponent
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

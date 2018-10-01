@@ -20,37 +20,7 @@ export class AppComponent implements OnInit {
       console.log('this got cake', data)
     })    }
     submitCake(){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-     let observable = this._httpService.createCake(this.newCake);
+    let observable = this._httpService.createCake(this.newCake);
      observable.subscribe(data => {
        console.log("Baking a beautifull cake")
      })
