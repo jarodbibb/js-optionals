@@ -14,16 +14,21 @@
   </div>
   <!-- <perfect-scrollbar style="max-width: 600px; max-height: 400px;" [config]="config">
       <div>Scrollable content</div> -->
-      <div *ngIf='test' >
-        
-        <div *ngFor= ' let add of addNote' class="box">
-          <p>Noted At: {{add.createdAt}}</p>
-          <p>Message: {{add.message}}</p>
+     <div class ="note">
+
+       <div *ngIf='test'>
+         
+         <div *ngFor= ' let add of addNote' class="box">
+           <p>Noted At: {{add.createdAt}}</p>
+           
+           <p>Message: {{add.message}}</p>
+          </div>
         </div>
-      </div>
-      <div *ngFor='let message of messages' class="box">
-        <p>Noted at: {{message.createdAt}}</p>
-        <p> Message: {{ message.message}} </p>
+        <div *ngFor='let message of messages' class="box">
+          <p>Noted at: {{message.piped}} </p>
+        
+          <p> Message: {{ message.message}} </p>
+        </div>
       </div>
     <!-- </perfect-scrollbar> -->
       
