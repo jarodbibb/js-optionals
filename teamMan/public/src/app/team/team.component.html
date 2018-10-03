@@ -20,7 +20,7 @@
        <tr *ngFor = "let player of players">
          <td> {{player.name}}</td>
          <td> {{player.position}}</td>
-         <td><button (click) = "delete()">Delete</button></td>
+         <td><button (click) = "delete(player._id)">Delete</button></td>
        </tr>
 
      </table>

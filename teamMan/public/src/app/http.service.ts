@@ -16,7 +16,7 @@ export class HttpService {
   updatePlayer(id,  player){
     return this._http.put('/player/' + id, player)
   }
-  delete( id){
-    return this._http.delete('/player/' + id)
+  deletePlayer(id){
+    return this._http.delete('/delete/' + id)
   }
 }

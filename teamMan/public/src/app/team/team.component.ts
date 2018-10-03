@@ -45,5 +45,11 @@ export class TeamComponent implements OnInit {
       console.log('data from get all ', this.players[0].name)
     })
   }
+  delete(id){
+    let observable = this._httpService.deletePlayer(id);
+    observable.subscribe(data=> {
+      console.log('data from delete', data)
+    })
 
+  }
 }
