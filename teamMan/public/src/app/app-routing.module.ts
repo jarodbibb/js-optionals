@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { GamesComponent } from './games/games.component';
+import { TeamComponent } from './team/team.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'games', component: GamesComponent, data: {type: 'edit'}},
+  {path: 'team', component: TeamComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
