@@ -20,7 +20,7 @@ addNote: [any];
     this.newNote = { message: ""}
   }
   new(){
-    console.log('here')
+         
     let observable = this._httpService.createNote(this.newNote);
     observable.subscribe(data=> {
       if(data['message'] === "Error"){
@@ -30,7 +30,6 @@ addNote: [any];
         this.addNote= data['data']
         this.router.navigate(['display', this.addNote])
        
-        
       }
     })
   }
