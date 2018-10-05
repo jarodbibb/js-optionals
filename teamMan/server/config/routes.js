@@ -13,7 +13,8 @@ module.exports = function(app){
         console.log('deletes in route')
         Players.delete(req, res)
     })
-    app.put('player/:id', (req, res) => {
+    app.put('/player/:id', (req, res) => {
+        console.log('routin this thang')
         Players.editPlayer(req, res)
     })
 }

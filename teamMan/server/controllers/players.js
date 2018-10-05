@@ -30,6 +30,7 @@ module.exports = {
         })
     },
     editPlayer: (req, res)=> {
+        console.log('edit route', data)
         Player.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
             if(err){
                 res.json({message: "Error", data: err})

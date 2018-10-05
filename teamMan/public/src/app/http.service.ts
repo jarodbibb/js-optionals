@@ -13,8 +13,9 @@ export class HttpService {
   createPlayer(player){
     return this._http.post('/player', player)
   }
-  updatePlayer(id,  player){
-    return this._http.put('/player/' + id, player)
+  updatePlayer(id, game, status){
+    console.log('here in the service', id, game, status)
+    return this._http.put('/player/' + id, game, status)
   }
   deletePlayer(id){
     return this._http.delete('/delete/' + id)

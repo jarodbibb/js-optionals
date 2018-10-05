@@ -1,5 +1,5 @@
-<h2>Player Status - Game {{number}}</h2>
-<h3> <a (click) = "game1()">Game 1</a> <span> | </span><a (click)= "game2()">Game 2</a><span> | </span><a (click)="game3()">Game 3</a></h3>
+<h2>Player Status - {{ gameNumber}}</h2>
+<h3> <a (click) = "game('game1')">Game 1</a> <span> | </span><a (click)= "game('game2')">Game 2</a><span> | </span><a (click)="game('game3')">Game 3</a></h3>
 <div>
 
   <table *ngFor="let player of players">
@@ -10,8 +10,10 @@
     </tr>
     <tr>
 
-      <td>{{player.name}}</td>
-      <td>{{player.game1}} {{player.game2}} {{player.game3}}</td>
+      <td>{{player['name']}}</td>
+      <td> {{player[gameNumber]}} </td>
+     
+      <td><button [ngClass] = "{ 'playing': 'playing' === player[gameNumber]}" (click)= "playing(player._id, 'playing')">Playing</button><button (click)="notPlaying()">Not Playing</button><button (click)="undecided()">Undecided</button></td>
     </tr>
   </table>
 </div>
