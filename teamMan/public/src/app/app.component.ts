@@ -13,6 +13,10 @@ export class AppComponent {
   constructor(private _httpService: HttpService, private _router: Router) { }
   ngOnInit(){
     this._router.navigate(['team'])
+    this.gothere()
+  }
+  gothere(){
+    this._router.navigate(['team'])
   }
   
 }

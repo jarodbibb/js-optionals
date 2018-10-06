@@ -51,9 +51,9 @@ export class TeamComponent implements OnInit {
     var idx: any;
     let observable = this._httpService.deletePlayer(id);
     observable.subscribe(data=> {
-      console.log('data from delete', data.data.name, this.players)
+      console.log('data from delete', data['data'].name, this.players)
      idx =  this.players.findIndex(function(element) {
-      return  element.name === data.data.name;
+      return  element.name === data['data'].name;
       })
       this.players.splice(idx, 1)
     })

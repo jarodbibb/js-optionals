@@ -33,21 +33,34 @@ status: string;
     let observable = this._httpService.updatePlayer(id, this.gameNumber, status )
     observable.subscribe(data => {
       console.log('got data back', data)
-      this.getAll()
+      var num = this.gameNumber
+      var idx = this.players.findIndex( function(element){
+        return element._id === data['data']._id
+      })
+      this.players[idx][this.gameNumber] = status
+      // this.getAll()
+      // console.log('checking this confusing thing', this.players[idx][this.gameNumber], num)
     })
   }
   notPlaying(id, status){
     let observable = this._httpService.updatePlayer(id, this.gameNumber, status)
     observable.subscribe(data => {
       console.log('not playing data ', data)
-      this.getAll()
+      var num = this.gameNumber
+      var idx= this.players.findIndex( function(element){
+        return element._id === data['data']._id
+      })
+      this.players[idx][this.gameNumber] = status
     })
   }
   undecided(id, status){
     console.log('status status', status)
     let observable = this._httpService.updatePlayer(id, this.gameNumber, status)
     observable.subscribe(data=> {
-      this.getAll()
+      var idx = this.players.findIndex(function (element){
+        return element._id === data['data']._id
+      })
+      this.players[idx][this.gameNumber] = status
     })
   }
 
