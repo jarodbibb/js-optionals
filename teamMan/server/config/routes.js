@@ -14,7 +14,7 @@ module.exports = function(app){
         Players.delete(req, res)
     })
     app.put('/player/:id', (req, res) => {
-        console.log('routin this thang')
+        console.log('routin this thang', req.body)
         Players.editPlayer(req, res)
     })
 }

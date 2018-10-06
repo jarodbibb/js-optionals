@@ -25,6 +25,7 @@ export class TeamComponent implements OnInit {
   roster(){
     this.try = !this.try;
     this.adding = false;
+    
   }
   add(){
     this.try = false;
@@ -35,6 +36,7 @@ export class TeamComponent implements OnInit {
     let observable = this._httpService.createPlayer(this.newPlayer);
     observable.subscribe(data => {
       console.log('data from create', data['data'])
+      this.players.push(data['data'])
 
     })
   }
@@ -46,9 +48,14 @@ export class TeamComponent implements OnInit {
     })
   }
   delete(id){
+    var idx: any;
     let observable = this._httpService.deletePlayer(id);
     observable.subscribe(data=> {
-      console.log('data from delete', data)
+      console.log('data from delete', data.data.name, this.players)
+     idx =  this.players.findIndex(function(element) {
+      return  element.name === data.data.name;
+      })
+      this.players.splice(idx, 1)
     })
 
   }

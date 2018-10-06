@@ -8,17 +8,15 @@ import { Router } from "@angular/router";
 })
 export class GamesComponent implements OnInit {
 players: [any];
-one: boolean;
-two: boolean;
-three: boolean;
 gameNumber: any;
+status: string;
 
 
   constructor(private _httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
    this.getAll();
-   this.game("game3")
+   this.game("game1")
   }
   getAll(){
     let observable = this._httpService.getAll();
@@ -35,6 +33,21 @@ gameNumber: any;
     let observable = this._httpService.updatePlayer(id, this.gameNumber, status )
     observable.subscribe(data => {
       console.log('got data back', data)
+      this.getAll()
+    })
+  }
+  notPlaying(id, status){
+    let observable = this._httpService.updatePlayer(id, this.gameNumber, status)
+    observable.subscribe(data => {
+      console.log('not playing data ', data)
+      this.getAll()
+    })
+  }
+  undecided(id, status){
+    console.log('status status', status)
+    let observable = this._httpService.updatePlayer(id, this.gameNumber, status)
+    observable.subscribe(data=> {
+      this.getAll()
     })
   }
 

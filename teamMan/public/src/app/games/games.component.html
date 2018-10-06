@@ -11,9 +11,9 @@
     <tr>
 
       <td>{{player['name']}}</td>
-      <td> {{player[gameNumber]}} </td>
+
      
-      <td><button [ngClass] = "{ 'playing': 'playing' === player[gameNumber]}" (click)= "playing(player._id, 'playing')">Playing</button><button (click)="notPlaying()">Not Playing</button><button (click)="undecided()">Undecided</button></td>
+      <td><button [ngClass] = "{ 'playing': 'playing' === player[gameNumber]}" (click)= "playing(player._id, 'playing')">Playing</button><button [ngClass]= "{'notPlaying': 'notplaying' === player[gameNumber]}" (click)="notPlaying(player._id, 'notplaying')">Not Playing</button><button [ngClass]= "{'undecided': 'undecided' === player[gameNumber]}"  (click)="undecided(player._id, 'undecided')">Undecided</button></td>
     </tr>
   </table>
 </div>

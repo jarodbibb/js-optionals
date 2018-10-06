@@ -30,8 +30,13 @@ module.exports = {
         })
     },
     editPlayer: (req, res)=> {
-        console.log('edit route', data)
-        Player.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+    console.log("wreckin bodies ", req.body.game )
+    var gameNum = req.body.game;
+    var status = req.body.status;
+    var newObj = {}
+    newObj[gameNum] = status;
+    console.log('testing how to use a variable as a key', )
+    Player.findByIdAndUpdate(req.params.id, {$set: newObj}, (err, data) => {
             if(err){
                 res.json({message: "Error", data: err})
             }else{

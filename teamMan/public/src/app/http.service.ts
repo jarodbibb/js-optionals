@@ -14,10 +14,12 @@ export class HttpService {
     return this._http.post('/player', player)
   }
   updatePlayer(id, game, status){
-    console.log('here in the service', id, game, status)
-    return this._http.put('/player/' + id, game, status)
+    var number = game;
+    console.log('here in the service', id, {game: game, status: status})
+    return this._http.put('/player/' + id, {game: game, status: status})
   }
   deletePlayer(id){
+    console.log('service delete id ', id)
     return this._http.delete('/delete/' + id)
   }
 }
