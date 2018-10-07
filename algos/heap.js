@@ -22,8 +22,12 @@ function MinHeap(){
     this.remove = function(){
         console.log('heap length', this.heap.length- 1 )
         var temp = this.heap[1]
+        console.log('temp ', temp)
         this.heap[1] = this.heap[this.heap.length -1]
+        console.log('heap1 newly assigned', this.heap[1])
         this.heap[this.heap.length -1] = temp;
+        console.log('last element after new assignment', this.heap[this.heap.lenght-1])
+        var poppped = this.heap.pop()
         if(this.heap[2] < this.heap[3]){
             if(this.heap[2]< this.heap[1]){
                 temp = this.heap[1]
@@ -37,11 +41,26 @@ function MinHeap(){
                 this.heap[3] = temp
             }
         }
-        return this.heap.pop()
-        
+        console.log(this.heap, poppped)
+
 
 
     }
 
 }
 
+var heapin = new MinHeap()
+heapin.insert(2)
+heapin.insert(7)
+heapin.insert(6)
+heapin.insert(5)
+
+function heapify(arr){
+    
+    var firstparent = Math.trunc(arr.length / 2)
+    var child1 = firstparent * 2
+    var child2 = firstparent *2 + 1 
+    while(arr[firstparent] > arr[child1] || arr[firstparent] > arr[child2] ){
+        if
+    }
+}
