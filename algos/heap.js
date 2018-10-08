@@ -58,9 +58,30 @@ heapin.insert(5)
 function heapify(arr){
     
     var firstparent = Math.trunc(arr.length / 2)
+    console.log('parent', firstparent)
     var child1 = firstparent * 2
+    console.log('child1', child1)
     var child2 = firstparent *2 + 1 
     while(arr[firstparent] > arr[child1] || arr[firstparent] > arr[child2] ){
-        if
+        if(arr[child1] < arr[child2]){
+            var temp = arr[firstparent]
+            var temp2 = firstparent
+            arr[firstparent] =  arr[child1]
+            arr[child1] = temp;
+            firstparent = Math.trunc(temp2 / 2)
+            child1 = firstparent * 2 
+            child2 = firstparent * 2 + 1
+
+        }else if(arr[child2] <= arr[child1]){
+            var temp = arr[firstparent]
+            var temp2 = firstparent
+            arr[firstparent] = arr[child2]
+            arr[child2]= temp;
+            firstparent = Math.trunc(temp2/ 2)
+            child1 = firstparent * 2;
+            child2 = firstparent * 2 + 1;
+        }
     }
+    console.log('finished ', arr)
+    return arr
 }
