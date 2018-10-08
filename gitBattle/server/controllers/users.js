@@ -30,4 +30,23 @@ module.exports = {
             }
         })
     },
+    update: (req, res) => {
+        User.findById(req.params.id, (err, data) => {
+            if(err){
+                res.json({message: "Error finding id", data: err})
+            }else{
+                if(data.score < req.body.score){
+                    data.score = req.body.score;
+                    User.save((err, data)=> {
+                        if(err){
+                            res.json({message: "Error updating", data: err})
+                        }else{
+                            res.json({message: "Success", data: data})
+
+                        }
+                    })
+                }
+            }
+        })
+    }
 }
