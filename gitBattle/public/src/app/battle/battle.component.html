@@ -1,18 +1,19 @@
 <div> 
   <div class="user1">
     <h2>Player 1</h2>
-    <form (submit)= "ready1()">
+    <form #form1 ="ngForm" (submit)= "ready1()">
       <label> Github Username: </label>
-      <input type="string" name='guser.name' [(ngModel)] = "guser.name">
-      <input  value= "Get User" type="submit">  
+      <input type="string" ngControl="name" name='guser1.name' [(ngModel)] = "guser1.name" required>
+      <input  [disabled] = "!form1.form.valid" value= "Get User" type="submit">  
     </form>
   </div>
   <div class="user2">
     <h2>Player 2</h2>
-    <form name='form2'  >
+    <form #formCtrl = "ngForm" (submit) = "ready2()" >
       <label>Github Username</label>
-      <input type="string" name='guser2.name' [(ngModel)] ="guser2.name" required/>
-      <button type="submit" [disabled]="!form2.valid" (click) = "ready2()">Get User </button>
+      
+      <input type="string" ngControl="name" name="guser2.name" [(ngModel)] ="guser2.name" required>
+      <input [disabled]= "!formCtrl.form.valid" type="submit" value="Get User">
     </form>
   </div>
 </div>
