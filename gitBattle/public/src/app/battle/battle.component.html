@@ -1,3 +1,18 @@
-<p>
-  battle works!
-</p>
+<div> 
+  <div class="user1">
+    <h2>Player 1</h2>
+    <form (submit)= "ready1()">
+      <label> Github Username: </label>
+      <input type="string" name='guser.name' [(ngModel)] = "guser.name">
+      <input  value= "Get User" type="submit">  
+    </form>
+  </div>
+  <div class="user2">
+    <h2>Player 2</h2>
+    <form name='form2'  >
+      <label>Github Username</label>
+      <input type="string" name='guser2.name' [(ngModel)] ="guser2.name" required/>
+      <button type="submit" [disabled]="!form2.valid" (click) = "ready2()">Get User </button>
+    </form>
+  </div>
+</div>

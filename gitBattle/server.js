@@ -14,6 +14,9 @@ app.all("*", (req, res, next) => {
     res.sendFile(path.resolve('./public/dist/index.html'))
 
 })
+// app.get("api/:username", (err, data)=> {
+
+// })
 app.listen(8000, function(){
     console.log('Listening to port 8000')
 })

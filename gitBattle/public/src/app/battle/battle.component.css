@@ -1,0 +1,7 @@
+.user1, .user2 {
+    display: inline-block;
+    width: 250px;
+   border: solid 1px grey;
+   margin: 5px;
+   padding: 7px;
+}
