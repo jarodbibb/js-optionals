@@ -56,14 +56,18 @@ heapin.insert(6)
 heapin.insert(5)
 
 function heapify(arr){
+    arr.push('undecided')
+    var tempa = arr[0]
+    arr[0]= arr[arr.length -1 ]
+    arr[arr.length -1 ] = tempa
     
-    var firstparent = Math.trunc(arr.length / 2)
+    var firstparent = Math.trunc(arr.length / 2 -1 )  
     console.log('parent', firstparent)
     var child1 = firstparent * 2
     console.log('child1', child1)
     var child2 = firstparent *2 + 1 
-    while(arr[firstparent] > arr[child1] || arr[firstparent] > arr[child2] ){
-        if(arr[child1] < arr[child2]){
+    while(arr[firstparent] > arr[child1] && child1 || arr[firstparent] > arr[child2] && child2 ){
+        if(arr[child1] < arr[child2] && child1){
             var temp = arr[firstparent]
             var temp2 = firstparent
             arr[firstparent] =  arr[child1]
@@ -72,7 +76,7 @@ function heapify(arr){
             child1 = firstparent * 2 
             child2 = firstparent * 2 + 1
 
-        }else if(arr[child2] <= arr[child1]){
+        }else if(arr[child2] <= arr[child1] && child2){
             var temp = arr[firstparent]
             var temp2 = firstparent
             arr[firstparent] = arr[child2]
@@ -84,4 +88,9 @@ function heapify(arr){
     }
     console.log('finished ', arr)
     return arr
+    // var temp = arr[0]
+    // arr[0] = arr[arr.length -1 ]
+    // arr[arr.length -1 ]
 }
+// heapify([6,4,7,8,9,2,1,10,3])
+heapify([20, 3, 8, 14, 9, 6, 2]);
