@@ -3,6 +3,7 @@ import {HttpService } from './../http.service';
 import { Router, ActivatedRoute, Params, Data } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-battle',
   templateUrl: './battle.component.html',
@@ -24,8 +25,19 @@ guser2: any;
     this.guser1 ={ name: ""}
     this.guser2 = {name: ""}
   }
-  ready2(){
-    console.log('user2 ', this.guser2)
-  }
 
+  // ready2(){
+  //   console.log('user2 ', this.guser2)
+  //   let observable = this._httpService.apiget(this.guser2)
+  //   observable.subscribe(data =>{
+  //     console.log('data back for user 2 from api', data)
+  //   })
+  // }
+
+  retrieveGithubUser(){
+    let obs = this._httpService.retrieveGithubUser(this.guser2.name);
+    obs.subscribe(response => {
+      console.log("Data: " + JSON.stringify(response));
+    })
+  }
 }

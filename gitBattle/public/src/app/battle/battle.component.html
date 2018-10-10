@@ -9,7 +9,7 @@
   </div>
   <div class="user2">
     <h2>Player 2</h2>
-    <form #formCtrl = "ngForm" (submit) = "ready2()" >
+    <form #formCtrl = "ngForm" (submit) = "retrieveGithubUser()" >
       <label>Github Username</label>
       
       <input type="string" ngControl="name" name="guser2.name" [(ngModel)] ="guser2.name" required>
