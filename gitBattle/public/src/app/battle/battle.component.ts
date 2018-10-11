@@ -18,9 +18,9 @@ guser1: any;
 guser2: any;
 user1: any;
 user2: any;
-rankings: [any] = [""]
+rankings: any[]= [] 
 ranking: {};
-sortable: [any]  =[{}]
+sortable: any[] =[] ;
 first: {any}
 second: {any}
 
@@ -43,6 +43,7 @@ second: {any}
 
   retrieveGithubUser(data, formNum){
     let obs = this._httpService.retrieveGithubUser(data.name);
+   
     obs.subscribe(response => {
       if(formNum === 1){
         this.switch1 = false;
@@ -71,6 +72,7 @@ second: {any}
       }
     })
   }
+  
         // if(this.rankings[0].score < score){
         //   this.rankings.splice(0,0, score)
         // }
@@ -100,8 +102,8 @@ second: {any}
 
     })
     console.log('sorting ', this.sortable)
-    // this.first = this.sortable[2][1]
-    // this.second = this.sortable[3][1]
+    this.first = this.sortable[0][1]
+    this.second = this.sortable[1][1]
   
     
 
