@@ -1,3 +1,9 @@
 <p>
   users works!
 </p>
+<div *ngFor = "let user of users; let i = index" >
+  <p > Place: {{i + 1}}</p>
+  <p>{{user.name}}</p>
+  <p> {{user.score}}</p>
+  
+</div>

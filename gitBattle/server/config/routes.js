@@ -6,6 +6,7 @@ module.exports = function(app) {
         Users.getAll(req, res)
     })
     app.post('/user', (req, res) => {
+        console.log('routes', req.body)
         Users.create(req, res)
     })
     app.put('/user/:id', (req, res) => {

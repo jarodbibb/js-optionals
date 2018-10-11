@@ -25,6 +25,7 @@ first: {any}
 second: {any}
 
 
+
   constructor(private _httpService: HttpService, private _router: Router ) { }
   
   ngOnInit() {
@@ -48,12 +49,23 @@ second: {any}
         var score = response['followers'] + response['public_repos'] * 12;
       
         this.rankings.push({name: response['name'], score: score})
+        var info = this.rankings
+        let obs = this._httpService.create(info);
+        obs.subscribe(data => {
+          console.log('data back form the data base', data)
+
+        })
         // console.log('rankings', this.rankings[0])
       } else if( formNum === 2){
         this.switch2 = false;
+        
         var score = response['followers'] + response['public_repos'] * 12;
-      
         this.rankings.push({name: response['name'], score: score})
+        var info = this.rankings
+        let obs = this._httpService.create(info);
+        obs.subscribe(data => {
+          console.log('user2 data back ', data)
+        })
       }if(this.switch1 === this.switch2){
           this.switch = true;
       }
@@ -72,7 +84,9 @@ second: {any}
         // console.log('testing to see rankings', this.rankings)
         
 
-
+ reset(){
+   this._router.navigate(['/'])
+ }
   startB(){
     
     this.battlin = true;
@@ -85,10 +99,10 @@ second: {any}
       return b[1] - a[1]
 
     })
-    console.log('sorting ', this.sortable[2])
-    this.first = this.sortable[2][1]
-    this.second = this.sortable[3][1]
-
+    console.log('sorting ', this.sortable)
+    // this.first = this.sortable[2][1]
+    // this.second = this.sortable[3][1]
+  
     
 
 

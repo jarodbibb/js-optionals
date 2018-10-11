@@ -3,10 +3,10 @@ var User = mongoose.model('User');
 
 module.exports = {
     getAll: (req, res) => {
-        User.find({}, (err, data) => {
+        User.find({}).sort([['score', -1]]).exec( (err, data) => {
 
             if(err){
-                res.jsoon({message: "Error", data: err})
+                res.json({message: "Error", data: err})
             }else{
                 res.json({message:"Success", data: data})
             }

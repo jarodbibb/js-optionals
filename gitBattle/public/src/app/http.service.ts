@@ -17,9 +17,9 @@ export class HttpService {
 
   constructor( private _http: HttpClient) { }
 
-// getAll(){
-//   return this._http.get('/user')
-// }
+getAll(){
+  return this._http.get('/user')
+}
 
 // apiget(data){
 //   return this._http.get('https://api.github.com/users/' + data.name).map( data = > data.json).toPromise()
@@ -35,5 +35,9 @@ retrieveGithubUser(username) {
 
     return this._http.get(`https://api.github.com/users/${username}`);
   } 
+}
+create(data){
+  console.log('service', data)
+  return this._http.post('/user', data[1])
 }
 }
