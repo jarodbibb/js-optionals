@@ -5,3 +5,11 @@
    margin: 5px;
    padding: 7px;
 }
+img{
+    display: center;
+}
+.btn{
+    margin: 5px;
+    width: 540px;
+    background-color: yellow;
+}

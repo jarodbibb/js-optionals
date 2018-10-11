@@ -1,19 +1,34 @@
-<div> 
+<div *ngIf="!battlin"> 
   <div class="user1">
-    <h2>Player 1</h2>
-    <form #form1 ="ngForm" (submit)= "ready1()">
+    <form *ngIf ="switch1" #form1 ="ngForm" (submit)= "retrieveGithubUser(guser1, 1)">
+        <h2>Player 1</h2>
       <label> Github Username: </label>
+  
       <input type="string" ngControl="name" name='guser1.name' [(ngModel)] = "guser1.name" required>
       <input  [disabled] = "!form1.form.valid" value= "Get User" type="submit">  
     </form>
+    <img *ngIf="!switch1" style="width: 150px ; height: 100px" src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&h=350" alt="flexin">
   </div>
   <div class="user2">
-    <h2>Player 2</h2>
-    <form #formCtrl = "ngForm" (submit) = "retrieveGithubUser()" >
+    <form *ngIf= "switch2" #formCtrl = "ngForm" (submit) = "retrieveGithubUser(guser2, 2)" >
+        <h2>Player 2</h2>
       <label>Github Username</label>
       
       <input type="string" ngControl="name" name="guser2.name" [(ngModel)] ="guser2.name" required>
       <input [disabled]= "!formCtrl.form.valid" type="submit" value="Get User">
     </form>
+    <img *ngIf="!switch2" style="width: 150px ; height: 100px" src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&h=350" alt="flexin">
+  </div>
+    <button class="btn" *ngIf="switch" (click)="startB()">Let's Rumble</button>
+</div>
+<div *ngIf="battlin">
+  <div class='scores'>
+     <div> 
+       <h3 class="first">1st Place</h3>
+       <p class="first">{{first.name}} (Score: {{first.score}})</p>
+       <h3 class="second">2nd Place</h3>
+       <p class="second">{{second.name}} (Score: {{second.score}})</p>
+     </div>
+    
   </div>
 </div>
