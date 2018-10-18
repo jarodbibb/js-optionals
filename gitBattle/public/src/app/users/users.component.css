@@ -1,0 +1,20 @@
+img {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+}
+span {
+    vertical-align: top;
+}
+.image{
+ display: inline-block;
+ width: 125 px;
+ border: 1px solid grey;
+ margin: 5px;
+ padding: 5px
+
+} 
+h4 {
+    display: inline-block;
+    vertical-align: top;
+}

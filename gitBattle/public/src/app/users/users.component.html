@@ -1,9 +1,9 @@
-<p>
-  users works!
-</p>
-<div *ngFor = "let user of users; let i = index" >
-  <p > Place: {{i + 1}}</p>
-  <p>{{user.name}}</p>
-  <p> {{user.score}}</p>
+
+<div *ngFor = "let user of users.slice(0, 9); let i = index" >
+  <span ><h4>Place: {{i + 1}}</h4></span>
+  <div class ="image">  <img src="https://images.pexels.com/photos/598664/pexels-photo-598664.jpeg?auto=compress&cs=tinysrgb&h=350" alt="champs">
+    <p>{{user.name}}</p>
+  </div> 
+  <span><h4>Score: {{user.score}}</h4></span> 
   
 </div>
